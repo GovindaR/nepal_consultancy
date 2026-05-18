@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --crimson: #dc2626;
+  --gold: #d4af37;
+  --ink: #0f0f0f;
+  --cream: #faf7f2;
+  --parchment: #f0e8d9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-japanese {
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* Diagonal section divider */
+.diagonal-section {
+  clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+}
+
+/* Red brush stroke underline */
+.brush-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.brush-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--crimson);
+  border-radius: 2px;
+  transform: rotate(-1deg);
+}
+
+/* Seigaiha (wave) pattern background */
+.wave-pattern {
+  background-image: 
+    radial-gradient(circle at 0% 50%, transparent 20px, rgba(220, 38, 38, 0.04) 20px, rgba(220, 38, 38, 0.04) 22px, transparent 22px),
+    radial-gradient(circle at 50% 0%, transparent 20px, rgba(220, 38, 38, 0.04) 20px, rgba(220, 38, 38, 0.04) 22px, transparent 22px);
+  background-size: 40px 40px;
+}
+
+/* Scroll animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Service card hover */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Nav link underline animation */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--crimson);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Torii gate decorative element */
+.torii-accent {
+  border-top: 4px solid var(--crimson);
+  position: relative;
+}
+
+.torii-accent::before,
+.torii-accent::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  width: 4px;
+  height: 30px;
+  background: var(--crimson);
+}
+
+.torii-accent::before { left: 20%; }
+.torii-accent::after { right: 20%; }
+
+/* Input focus styles */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--crimson) !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--crimson);
+  border-radius: 3px;
+}
+
+/* Transition for page elements */
+.page-enter {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
